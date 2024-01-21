@@ -1,0 +1,58 @@
+[package]
+name = "papaya-transactions"
+version = "0.1.0"
+edition = "2021"
+exclude = ["index.node"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"    # The source file of the target.
+crate-type = ["lib", "cdylib"]   # The crate types to generate.
+
+
+[dependencies]
+bitcoin = { version = "0.29.2", features = ["rand", "no-std"], default-features = false }
+#p256k1 = "5.1"
+clap = { version = "4.1.1", features = ["derive", "env"] }
+hex = "0.4.3"
+p256k1 = { git = "https://github.com/Trust-Machines/p256k1/", branch = "wrap-schnorr" }
+wsts = "1.2"
+rusqlite = "0.24.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+thiserror = "1.0"
+toml = "0.7.2"
+rand_core = "0.6"
+hashbrown = "0.13"
+bincode = "1.3.3"
+itertools = "^0.10.5"
+sha2 = "0.10"
+ureq = { version = "2.6", features = ["json"] }
+url = "2.3.1"
+rand = "0.8.5"
+backoff = "0.4"
+mockall = "0.11.3"
+markdown-toc = "0.2.0"
+reqwest = "0.11.14"
+aes-gcm = "0.10"
+sha256 = "=1.1.3"
+secp256k1 = { version = "0.27.0", features = ["recovery", "serde"] }
+# regex = "~1.8.4"
+
+
+#[dependencies.neon]
+#version = "0.9.1"
+#default-features = false
+#features = ["napi-4", "channel-api", "event-queue-api", "try-catch-api"]
+
+
+[dev-dependencies]
+#test-utils = { path = "../stacks-sbtc/test-utils" }
+ctrlc = "=3.2.5"
+nix = "=0.26.2"
+libc = "0.2.139"
+uuid = { version = "1.4.1", features = ["v4"] }
+once_cell = "1.18"
